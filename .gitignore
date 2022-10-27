@@ -5,7 +5,6 @@ data/
 yolov5/__pycache__
 yolov5/.cometml-runs
 yolov5/.ipynb_checkpoints
-yolov5/facemask_512_yolo5s
 yolov5/facemask_640_yolo5s_1026
 yolov5/yolov5s.pt
 yolov5/datasets
