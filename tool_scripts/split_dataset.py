@@ -7,8 +7,10 @@ label_dir = os.listdir('./labels')
 image_dir.sort()
 label_dir.sort()
 
-pivot1 = int(len(image_dir) * 0.75)
+    
+pivot1 = int(len(image_dir) * 0.8)
 pivot2 = int(len(image_dir) * 0.9)
+
 
 
 for i in range(pivot1):
@@ -34,4 +36,3 @@ for j in range(pivot2,len(image_dir)):
     shutil.copy(img_path, './test/images')
     shutil.copy(label_path, './test/labels')
     print('copy ' + img_path + ' to ./test/images')
-    

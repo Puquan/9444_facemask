@@ -1,6 +1,14 @@
 # 9444_facemask
 COMP9444 Group Project
 
+|     Name      | Student ID |
+| :-----------: | :--------: |
+|  Puquan Chen  |  z5405329  |
+| Wenzhen Zhang |  z5282188  |
+|   Zeran Qiu   |  z5237346  |
+| Xiaolan Zhang |  z5400028  |
+|  Haoyu Zang   |  z5326339  |
+
 
 Our Dataset comes from：
 
