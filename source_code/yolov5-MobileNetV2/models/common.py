@@ -873,30 +873,30 @@ class ConvBNReLU(nn.Sequential):  # 该函数主要做卷积 池化 ReLU6激活�
             nn.ReLU6(inplace=True))
  
  
-class InvertedResidual(nn.Module):  # 该模块主要实现了倒残差模块
-    def __init__(self, inp, oup, stride, expand_ratio):  # inp 输入 oup 输出 stride步长 exoand_ratio 按比例扩张
+class InvertedResidual(nn.Module):  #  inverted residual structure
+    def __init__(self, inp, oup, stride, expand_ratio):  
         super(InvertedResidual, self).__init__()
         self.stride = stride
         assert stride in [1, 2]
-        hidden_dim = int(round(inp * expand_ratio))  # 由于有到残差模块有1*1,3*3的卷积模块，所以可以靠expand_rarton来进行升维
-        self.use_res_connect = self.stride == 1 and inp == oup  # 残差连接的判断条件：当步长=1且输入矩阵与输出矩阵的shape相同时进行
+        hidden_dim = int(round(inp * expand_ratio))  
+        self.use_res_connect = self.stride == 1 and inp == oup  
         layers = []
-        if expand_ratio != 1:  # 如果expand_ratio不等于1，要做升维操作，对应图中的绿色模块
+        if expand_ratio != 1:  # upscale
             # pw
             layers.append(ConvBNReLU(inp, hidden_dim, kernel_size=1))  # 这里添加的是1*1的卷积操作
         layers.extend([
             # dw
             ConvBNReLU(hidden_dim, hidden_dim, stride=stride, groups=hidden_dim),
-            # 这里做3*3的卷积操作，步长可能是1也可能是2,groups=hidden_dim表示这里使用了分组卷积的操作，对应图上的蓝色模块
+            # 3*3 conv
  
             # pw-linear
-            nn.Conv2d(hidden_dim, oup, 1, 1, 0, bias=False),  # 对应图中的黄色模块
+            nn.Conv2d(hidden_dim, oup, 1, 1, 0, bias=False),  
             nn.BatchNorm2d(oup),
         ])
-        self.conv = nn.Sequential(*layers)  # 将layers列表中的元素解开依次传入nn.Sequential
+        self.conv = nn.Sequential(*layers)  
  
     def forward(self, x):
-        if self.use_res_connect:  # 如果使用了残差连接，就会进行一个x+的操作
+        if self.use_res_connect:  # skip connection 
             return x + self.conv(x)
         else:
-            return self.conv(x)  # 否则不做操作
+            return self.conv(x)  
