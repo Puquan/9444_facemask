@@ -6,3 +6,5 @@ Reference:
 
 `xml_to_txt`: https://www.bilibili.com/read/cv17798365/
 
+`voc2coc`: https://blog.csdn.net/m0_37576376/article/details/109547202
+

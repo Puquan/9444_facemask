@@ -18,17 +18,17 @@ data = dict(
     workers_per_gpu=15,  # num_workers
     pin_memory=False,
     train=dict(
-        img_prefix='./mmdetection/data/coco/train2017',
+        img_prefix='./data/coco/train2017',
         classes=classes,
-        ann_file='./mmdetection/data/coco/annotations/instances_train2017.json'),
+        ann_file='./data/coco/annotations/instances_train2017.json'),
     val=dict(
-        img_prefix='./mmdetection/data/coco/val2017',
+        img_prefix='./data/coco/val2017',
         classes=classes,
-        ann_file='./mmdetection/data/coco/annotations/instances_val2017.json'),
+        ann_file='./data/coco/annotations/instances_val2017.json'),
     test=dict(
-        img_prefix='./mmdetection/data/coco/val2017',
+        img_prefix='./data/coco/val2017',
         classes=classes,
-        ann_file='./mmdetection/data/coco/annotations/instances_val2017.json'))
+        ann_file='./data/coco/annotations/instances_val2017.json'))
 
 load_from = None
 # runner = dict(_delete_=True, type='IterBasedRunner', max_iters=90000)
