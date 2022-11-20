@@ -3,7 +3,7 @@
 sys.platform: linux
 Python: 3.8.10 (default, Jun  4 2021, 15:09:15) [GCC 7.5.0]
 CUDA available: True
-GPU 0: NVIDIA A100-SXM4-80GB
+GPU 0: NVIDIA GeForce RTX 3090
 CUDA_HOME: /usr/local/cuda
 NVCC: Cuda compilation tools, release 11.3, V11.3.109
 GCC: gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0
